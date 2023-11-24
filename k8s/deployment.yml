@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goapp
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app:
+        goapp
+  template:
+    metadata:
+      labels:
+        app:
+          goapp
+    spec:
+      containers:
+      - name: gopapp
+        image: paulo/gointensivo:latest
+        resources:
+          limit:
+            memory: "120Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
